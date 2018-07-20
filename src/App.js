@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import Auth from './components/Auth';
+import Form from './components/Form';
+import Post from './components/Post';
+import Nav from './components/Nav';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Dashboard />
+        <Auth />
+        <Form />
+        <Post />
+        <Nav />
       </div>
     );
   }
