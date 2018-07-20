@@ -1,22 +1,40 @@
-import React, { Component } from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux'
-import * as Actions from '../ducks/reducer';
-
-export class Post extends Component {
+import React, {Component} from 'react';
+  
+  import { connect } from 'react-redux';
+  
+  import {activateGreet,closeGreet} from '../ducks/redux';
+  
+  // App.js
+  export class Post extends Component {
+  
     render() {
-        const {count, dispatch} = this.props;
-        const actions = bindActionCreators(Actions, dispatch);
-        return (
-            <div className='cont'>
-                <div>
-                    <h1>Counter</h1>
-                </div>
-                <p>{count}</p>
-                <button className='inc' onClick={actions.increment}></button>
-                <button className='dec' onClick={actions.decrement}></button>
-            </div>
-        )
+      return (
+        <div>
+  
+          <h1>{this.props.Greet.title || 'Hello World!'}</h1>
+  
+          {this.props.Greet.title ?
+            <button onClick={this.props.closeGreet}>
+              Exit Greet
+            </button> :
+            <button onClick={() => this.props.activateGreet({ title: "I'm Here" })}>
+              Click Me!
+            </button> 
+         }
+        </div>
+      );
     }
-}
-export default connect(state => state)(Post);
+  
+  }
+  
+  const mapStateToProps = (state) => ({
+    Greet: state.Greet,
+  });
+  
+  const mapDispatchToProps = {
+    activateGreet,
+    closeGreet,
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Post);
+  

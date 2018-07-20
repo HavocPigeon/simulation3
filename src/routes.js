@@ -8,6 +8,6 @@ import React from 'react';
 export default <Switch>
     <Route exact path='/' component={Auth}/>
     <Route exact path='/dashboard' component={Dashboard}/>
-    <Route exact path='/post/:postid' component={Post}/>
+    <Route exact path='/post' component={Post}/>
     <Route exact path='/new' component={Form}/>
 </Switch>

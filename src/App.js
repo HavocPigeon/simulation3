@@ -88,7 +88,7 @@ class App extends Component {
         {routes}
         <Link to='/' className='auth'>Auth</Link>
         <Link to='/dashboard' className='dashboard'>Dashboard</Link>
-        <Link to='/post/:postid' className='post'>Post</Link>
+        <Link to='/post' className='post'>Post</Link>
         <Link to='/new' className='form'>Form</Link>
       </div>
 
