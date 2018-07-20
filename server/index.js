@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const c = require('./controller.js');
 const massive = require('massive');
 require('dotenv').config();
 const numOfSaltRounds = 12;
@@ -27,7 +26,20 @@ const port = 4000;
 app.listen(port, () => {console.log(`server is listening on ${port}`)})
 
 
-
+app.delete('/api/animal/:id', (req, res) => {
+   const db = req.app.get('db');
+   db.delete_animals(req.params.id)
+   .then(data => {res.status(200).send(data)})
+   .catch(err => {console.log(err)
+  res.status(500).send('there was an error')})
+})
+app.get(`/api/animal`, (req, res) => {
+  const db = req.app.get('db');
+  db.select_animals(req.query.id)
+  .then(data => {res.status(200).send(data)})
+  .catch(err => {console.log(err)
+  res.status(500).send('there was an error')})
+})
 
 app.post('/register', (req, res) => {
   const db = app.get('db');

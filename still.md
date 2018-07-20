@@ -1,5 +1,5 @@
-static express files - build
 params/query endpoint
-delete endpoint
+delete rest
 
-routing match object
+
+check
